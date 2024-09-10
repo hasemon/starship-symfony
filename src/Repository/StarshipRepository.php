@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Model\Starship;
 use Psr\Log\LoggerInterface;
 
-class StarshipRipository
+class StarshipRepository
 {
     public function __construct(private LoggerInterface $logger)
     {
@@ -40,5 +40,16 @@ class StarshipRipository
                 'under construction',
             ),
         ];
+    }
+
+    public function find(int $id): ?Starship
+    {
+        foreach ($this->findAll() as $starship) {
+            if ($starship->getId() === $id) {
+                return $starship;
+            }
+        }
+
+        return null;
     }
 }

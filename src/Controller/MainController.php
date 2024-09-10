@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Repository\StarshipRipository;
+use App\Repository\StarshipRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class MainController extends AbstractController
 {
     #[Route('/')]
-    public function homepage(StarshipRipository $starshipRipository): Response
+    public function homepage(StarshipRepository $starshipRipository): Response
     {
         $ships = $starshipRipository->findAll();
         $myShip = $ships[array_rand($ships)];
