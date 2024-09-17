@@ -4,36 +4,40 @@
 {% block body %}
 
 
-<h1>
-    Star shop is the best shop. We have total {{ ships|length * 10 }} parts!
-</h1>
-<div>
-    {% if ships|length > 2 %}
-        <p>
-            Ship count is over the storage limit.
-        </p>
-    {% endif %}
-</div>
+    <h1>
+        Star shop is the best shop. We have total {{ ships|length * 10 }} parts!
+    </h1>
+    <div>
+        {% if ships|length > 2 %}
+            <p>
+                Ship count is over the storage limit.
+            </p>
+        {% endif %}
+    </div>
 
-<div>
-    <table>
-        <tr>
-            <th>Name</th>
-            <td>{{ myShip.name }}</td>
-        </tr>
-        <tr>
-            <th>Class</th>
-            <td>{{ myShip.class }}</td>
-        </tr>
-        <tr>
-            <th>Captain</th>
-            <td>{{ myShip.captain|upper }}</td>
-        </tr>
-        <tr>
-            <th>Status</th>
-            <td>{{ myShip.status }}</td>
-        </tr>
-    </table>
-</div>
+    <div>
+        <table>
+            <tr>
+                <th>Name</th>
+                <td>
+                    <a href="{{ path('app_starship_show', {id: myShip.id}) }}">
+                        {{ myShip.name }}
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <th>Class</th>
+                <td>{{ myShip.class }}</td>
+            </tr>
+            <tr>
+                <th>Captain</th>
+                <td>{{ myShip.captain|upper }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ myShip.status }}</td>
+            </tr>
+        </table>
+    </div>
 
 {% endblock %}
